@@ -8,7 +8,7 @@ const MovieList = ({ movies }) => {
       {movies !== null && (
         <ul className={css.list}>
           {movies.results.map((film) => (
-            <li key={film.id} className={css.item}>
+            <li key={film.id}>
               <Link
                 to={`/movies/${film.id}`}
                 state={location}
@@ -18,16 +18,20 @@ const MovieList = ({ movies }) => {
                   <img
                     src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
                     alt={film.original_title}
-                    width={125}
+                    width={240}
+                    height={360}
+                    className={css.img}
                   />
-                  <p>{film.original_title}</p>
+                  <p className={css.p}>{film.original_title}</p>
                 </div>
               </Link>
             </li>
           ))}
         </ul>
       )}
-      ist
+      {movies.total_results == 0 && (
+        <p className={css.noFound}>Sorry, no results</p>
+      )}
     </>
   );
 };

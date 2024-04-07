@@ -3,7 +3,7 @@ import css from "./Navigation.module.css";
 import clsx from "clsx";
 
 const getNavLinkClassNames = ({ isActive }) =>
-  clsx(css.headerLink, {
+  clsx(css.link, {
     [css.active]: isActive,
     [css.inactive]: !isActive,
   });

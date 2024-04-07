@@ -49,42 +49,50 @@ const MovieDetailsPage = () => {
       {isLoading && <Loader />}
       {film && (
         <div className={css.div}>
-          <button type="button" className={css.bntGoBack}>
-            <Link to={backLinkRef.current} className={css.refGoBack}>
+          <button type="button" className={css.back}>
+            <Link to={backLinkRef.current} className={css.backLink}>
               Go back
             </Link>
           </button>
 
-          <div className={css.resultsWrapp}>
+          <div className={css.result}>
             <img
               src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
               alt={film.original_title}
               className={css.img}
+              width={400}
+              height={600}
             />
-            <div className={css.infoWrap}>
-              <h2>
-                {film.original_title}(
-                {film.release_date && film.release_date.split("-")[0]})
-              </h2>
-              <p>User Score: {Math.round(film.popularity / 100)}%</p>
-              <h3>Overwiew</h3>
-              <p>{film.overview}</p>
-              <h3>Genres</h3>
-              {film.genres.map((gen) => {
-                return <p key={gen.id}>{gen.name}</p>;
-              })}
+            <div className={css.info}>
+              <div>
+                <h2>
+                  {film.original_title}(
+                  {film.release_date && film.release_date.split("-")[0]})
+                </h2>
+                <p>User Score: {Math.round(film.popularity / 100)}%</p>
+              </div>
+              <div>
+                <h3>Overwiew</h3>
+                <p>{film.overview}</p>
+              </div>
+              <div>
+                <h3>Genres</h3>
+                {film.genres.map((genre) => {
+                  return <p key={genre.id}>{genre.name}</p>;
+                })}
+              </div>
             </div>
           </div>
-          <div className={css.addInfo}>
-            <p className={css.addInfoText}>Additional information</p>
-            <ul className={css.addInfoList}>
-              <li className={css.addInfoItem}>
-                <Link className={css.addInfoLink} to="cast">
+          <div className={css.additional}>
+            <h3>Additional information</h3>
+            <ul className={css.additionalList}>
+              <li>
+                <Link className={css.additionalLink} to="cast">
                   Cast
                 </Link>
               </li>
-              <li className={css.addInfoItem}>
-                <Link className={css.addInfoLink} to="reviews">
+              <li>
+                <Link className={css.additionalLink} to="reviews">
                   Reviews
                 </Link>
               </li>

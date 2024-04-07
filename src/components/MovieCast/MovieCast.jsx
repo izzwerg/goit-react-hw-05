@@ -3,6 +3,7 @@ import { requestMovieCredits } from "../../services/api.js";
 import { useEffect, useState } from "react";
 import Loader from "../Loader/Loader.jsx";
 import Error from "../Error/Error.jsx";
+import css from "./MovieCast.module.css"
 
 const MovieCast = () => {
   const [casts, setCast] = useState(null);
@@ -30,17 +31,20 @@ const MovieCast = () => {
       {isError && <Error />}
       {isLoading && <Loader />}
       {casts && (
-        <ul>
+        <ul className={css.list}>
           {casts.cast.map((cast) => {
             return (
               <li key={cast.cast_id}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
-                  alt=""
+                  alt={cast.original_name}
                   key={cast.id}
+                  width={300}
+                  height={450}
+                  className={css.img}
                 />
-                <p>Original name: {cast.original_name}</p>
-                <p>Character: {cast.character}</p>
+                <p className={css.name}>Original name: {cast.original_name}</p>
+                <p className={css.char}>Character: {cast.character}</p>
               </li>
             );
           })}

@@ -3,6 +3,7 @@ import { requestMovieReviews } from "../../services/api.js";
 import { useEffect, useState } from "react";
 import Loader from "../Loader/Loader.jsx";
 import Error from "../Error/Error.jsx";
+import css from "./MovieReviews.module.css"
 
 const MovieReviews = () => {
   const [rewiews, setRewiews] = useState(null);
@@ -30,12 +31,12 @@ const MovieReviews = () => {
       {isError && <Error />}
       {isLoading && <Loader />}
       {rewiews && (
-        <ul>
+        <ul className={css.list}>
           {rewiews.results.map((rewiew) => {
             return (
-              <li key={rewiew.id}>
-                <p>Author : {rewiew.author}</p>
-                <p>Movie review: {rewiew.content}</p>
+              <li className={css.item} key={rewiew.id}>
+                <p className={css.author}>Author : {rewiew.author}</p>
+                <p>{rewiew.content}</p>
               </li>
             );
           })}

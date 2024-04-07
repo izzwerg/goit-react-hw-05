@@ -71,7 +71,7 @@ const MoviesPage = () => {
             type="submit"
             title="Click to search"
             aria-label="Search"
-            className={css.btn}
+            className={css.button}
           >
             Search
           </button>

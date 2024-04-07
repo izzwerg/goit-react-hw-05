@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Loader from "../../components/Loader/Loader.jsx";
 import Error from "../../components/Error/Error.jsx";
 import MovieList from "../../components/MovieList/MovieList.jsx";
+import css from "./HomePage.module.css"
 
 const HomePage = () => {
   const [TrendMovies, setTrendMovies] = useState(null);
@@ -29,6 +30,7 @@ const HomePage = () => {
     <>
       {isError && <Error />}
       {isLoading && <Loader />}
+      <h2 className={css.h2}>Trending today</h2>
       {TrendMovies !== null && <MovieList movies={TrendMovies} />}
     </>
   );
